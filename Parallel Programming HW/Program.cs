@@ -1,18 +1,16 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
+﻿using System.Diagnostics;
 using System.Text;
-using System.Threading;
 
 namespace Parallel_Programming_HW
 {
     internal class Program
     {
-        public static StreamReader sr = new StreamReader("C:\\Users\\Todor\\source\\repos\\Parallel Programming HW\\Parallel Programming HW\\Book.txt");
-        static char[] charToRemove = { ' ', '\n', '\r', '.', ',', '-', '!', '?', '(', ')','"',':' };
+
+        public static StreamReader sr = new StreamReader(@"C:\Users\Todor\source\repos\Parallel Programming HW\Parallel Programming HW\Book.txt");
+        static char[] charToRemove = { ' ', '\n', '\r', '.', ',', '-', '!', '?', '(', ')', '"', ':' };
         static string[] Words = Text();
         static Stopwatch stopwatch = new Stopwatch();
-        
+
 
         static string[] Text()
         {
@@ -103,27 +101,27 @@ namespace Parallel_Programming_HW
             shortestWordThread.Start();
             longestWordThread.Start();
             averageWordLengthThread.Start();
-/*
-            numOfTheWordsThread.Join();
-            shortestWordThread.Join();
-            longestWordThread.Join();
-            averageWordLengthThread.Join();*/
+            /*
+                        numOfTheWordsThread.Join();
+                        shortestWordThread.Join();
+                        longestWordThread.Join();
+                        averageWordLengthThread.Join();*/
             stopwatch.Stop();
 
             Console.WriteLine($"Total Execution Time for All Threads: {stopwatch.Elapsed.TotalMilliseconds} ms");
-     
+
 
             stopwatch.Restart();
-            
+
             Console.WriteLine($"Method Number Of Words: {NumberOfWords()}");
-            Console.WriteLine($"Method Shortest Word: {ShortestWord()}"); 
+            Console.WriteLine($"Method Shortest Word: {ShortestWord()}");
             Console.WriteLine($"Method Longest Word: {LongestWord()}");
             Console.WriteLine($"Method Average Word Length: {AverageWordLength():N2}");
             stopwatch.Stop();
 
-           
+
             Console.WriteLine($"Execution Time for Method Calls: {stopwatch.Elapsed.TotalMilliseconds} ms");
-    
+
 
         }
     }
